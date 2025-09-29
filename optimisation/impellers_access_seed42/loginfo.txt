@@ -1,0 +1,480 @@
+--------------------------------------------------------------------------------
+Starting ACCESS run at 00:09:30 on 22/01/2025
+
+Access
+------
+multi_objective = None
+paths = 
+  AccessPaths
+  -----------
+  directory = access_seed42
+  epochs = access_seed42/epochs_pop50.csv
+  epochs_scaled = access_seed42/epochs_pop50_scaled.csv
+  history = access_seed42/history_pop50.csv
+  history_scaled = access_seed42/history_pop50_scaled.csv
+  outputs = access_seed42/outputs
+  results = access_seed42/results
+  script = access_seed42/access_script.py
+  setup = access_seed42/access_setup.toml
+progress = 
+  AccessProgress
+  --------------
+  epochs = None
+  epochs_scaled = None
+  history = None
+  history_scaled = None
+  stderr = None
+  stdout = None
+scheduler = 
+  SlurmScheduler
+  --------------
+  commands = 
+          # Commands you'd add in the sbatch script, after `#`
+          module purge; module load bluebear
+
+          # Load OpenFOAM version needed
+          module load bear-apps/2022b
+          module load OpenFOAM/v2312-foss-2022b
+
+          # Environment with our Python libraries
+          module load Miniforge3/24.1.2-0
+          PYENV=wind-$BB_CPU
+
+          # Configure environment
+          source ${FOAM_BASH}
+
+          echo "Environment variables:"
+          echo $WM_PROJECT_DIR
+          echo $WM_THIRD_PARTY_DIR
+    
+  interpreter = /rds/homes/a/aln705/.conda/envs/wind-sapphire/bin/python
+  kwargs = {'nodes': 1, 'account': 'windowcr-med-granutools', 'constraint': 'sapphire'}
+  mail_type = NONE
+  mem = None
+  ntasks = 32
+  qos = bbdefault
+  script = access_slurm_submission.sh
+  time = 13:0:0
+setup = 
+  AccessSetup
+  -----------
+  parameters = 
+                                         value    min    max   sigma
+    bottom_clearance                  0.300000    0.0    0.8    0.32
+    xplace                            0.000000   -0.8    0.8    0.64
+    yplace                            0.000000   -0.8    0.8    0.64
+    impeller/height_ratio             0.092857    0.0    0.8    0.32
+    impeller/diameter_ratio           0.335000    0.0    0.8    0.32
+    impeller/0/place_rel              0.597000    0.0    1.0    0.40
+    impeller/0/xlen_rel               0.806000    0.0    1.0    0.40
+    impeller/0/ylen_rel               0.003000    0.0    1.0    0.40
+    impeller/0/joint_place            0.500000    0.0    1.0    0.40
+    impeller/0/joint_angle            0.000000 -180.0  180.0  144.00
+    impeller/0/lean_place             0.500000    0.0    1.0    0.40
+    impeller/0/lean_angle             0.000000 -180.0  180.0  144.00
+    impeller/0/turn_place             0.500000    0.0    1.0    0.40
+    impeller/0/turn_angle             0.000000 -180.0  180.0  144.00
+    impeller/0/twist                  0.000000    0.0  360.0  144.00
+    impeller/0/helix                  0.000000    0.0  360.0  144.00
+    impeller/0/curl                   0.000000    0.0  500.0  200.00
+    impeller/0/around_number          6.000000    0.5   16.5    6.40
+    impeller/0/repeat_number          1.000000    0.5    8.5    3.20
+    impeller/0/repeat_heights_equal   2.000000    0.0    4.0    1.60
+    impeller/0/repeat_angles_bias    90.000000    0.0  180.0   72.00
+    impeller/fidgetsurface/0/alpha1   0.000000    0.0    8.0    3.20
+    impeller/fidgetsurface/0/beta1    0.010000    0.0    5.0    2.00
+  parameters_scaled = 
+                                        value       min       max  sigma
+    bottom_clearance                 0.937500  0.000000  2.500000    1.0
+    xplace                           0.000000 -1.250000  1.250000    1.0
+    yplace                           0.000000 -1.250000  1.250000    1.0
+    impeller/height_ratio            0.290178  0.000000  2.500000    1.0
+    impeller/diameter_ratio          1.046875  0.000000  2.500000    1.0
+    impeller/0/place_rel             1.492500  0.000000  2.500000    1.0
+    impeller/0/xlen_rel              2.015000  0.000000  2.500000    1.0
+    impeller/0/ylen_rel              0.007500  0.000000  2.500000    1.0
+    impeller/0/joint_place           1.250000  0.000000  2.500000    1.0
+    impeller/0/joint_angle           0.000000 -1.250000  1.250000    1.0
+    impeller/0/lean_place            1.250000  0.000000  2.500000    1.0
+    impeller/0/lean_angle            0.000000 -1.250000  1.250000    1.0
+    impeller/0/turn_place            1.250000  0.000000  2.500000    1.0
+    impeller/0/turn_angle            0.000000 -1.250000  1.250000    1.0
+    impeller/0/twist                 0.000000  0.000000  2.500000    1.0
+    impeller/0/helix                 0.000000  0.000000  2.500000    1.0
+    impeller/0/curl                  0.000000  0.000000  2.500000    1.0
+    impeller/0/around_number         0.937500  0.078125  2.578125    1.0
+    impeller/0/repeat_number         0.312500  0.156250  2.656250    1.0
+    impeller/0/repeat_heights_equal  1.250000  0.000000  2.500000    1.0
+    impeller/0/repeat_angles_bias    1.250000  0.000000  2.500000    1.0
+    impeller/fidgetsurface/0/alpha1  0.000000  0.000000  2.500000    1.0
+    impeller/fidgetsurface/0/beta1   0.005000  0.000000  2.500000    1.0
+  population = 50
+  rng = Generator(PCG64)
+  scaling = 
+    [  0.32   0.64   0.64   0.32   0.32   0.4    0.4    0.4    0.4  144.
+       0.4  144.     0.4  144.   144.   144.   200.     6.4    3.2    1.6
+      72.     3.2    2.  ]
+  script = #!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# File   ...
+  seed = 42
+  target = 0.1
+verbose = 4
+--------------------------------------------------------------------------------
+Starting ACCESS run at 23:42:59 on 29/01/2025
+
+Access
+------
+multi_objective = None
+paths = 
+  AccessPaths
+  -----------
+  directory = access_seed42
+  epochs = access_seed42/epochs_pop50.csv
+  epochs_scaled = access_seed42/epochs_pop50_scaled.csv
+  history = access_seed42/history_pop50.csv
+  history_scaled = access_seed42/history_pop50_scaled.csv
+  outputs = access_seed42/outputs
+  results = access_seed42/results
+  script = access_seed42/access_script.py
+  setup = access_seed42/access_setup.toml
+progress = 
+  AccessProgress
+  --------------
+  epochs = None
+  epochs_scaled = None
+  history = None
+  history_scaled = None
+  stderr = None
+  stdout = None
+scheduler = 
+  SlurmScheduler
+  --------------
+  commands = 
+          # Commands you'd add in the sbatch script, after `#`
+          module purge; module load bluebear
+
+          # Load OpenFOAM version needed
+          module load bear-apps/2022b
+          module load OpenFOAM/v2312-foss-2022b
+
+          # Environment with our Python libraries
+          module load Miniforge3/24.1.2-0
+          PYENV=wind-$BB_CPU
+
+          # Configure environment
+          source ${FOAM_BASH}
+
+          echo "Environment variables:"
+          echo $WM_PROJECT_DIR
+          echo $WM_THIRD_PARTY_DIR
+    
+  interpreter = /rds/homes/a/aln705/.conda/envs/wind-sapphire/bin/python
+  kwargs = {'nodes': 1, 'account': 'windowcr-med-granutools', 'constraint': 'sapphire'}
+  mail_type = NONE
+  mem = None
+  ntasks = 32
+  qos = bbdefault
+  script = access_slurm_submission.sh
+  time = 13:0:0
+setup = 
+  AccessSetup
+  -----------
+  parameters = 
+                                         value    min    max   sigma
+    bottom_clearance                  0.300000    0.0    0.8    0.32
+    xplace                            0.000000   -0.8    0.8    0.64
+    yplace                            0.000000   -0.8    0.8    0.64
+    impeller/height_ratio             0.092857    0.0    0.8    0.32
+    impeller/diameter_ratio           0.335000    0.0    0.8    0.32
+    impeller/0/place_rel              0.597000    0.0    1.0    0.40
+    impeller/0/xlen_rel               0.806000    0.0    1.0    0.40
+    impeller/0/ylen_rel               0.003000    0.0    1.0    0.40
+    impeller/0/joint_place            0.500000    0.0    1.0    0.40
+    impeller/0/joint_angle            0.000000 -180.0  180.0  144.00
+    impeller/0/lean_place             0.500000    0.0    1.0    0.40
+    impeller/0/lean_angle             0.000000 -180.0  180.0  144.00
+    impeller/0/turn_place             0.500000    0.0    1.0    0.40
+    impeller/0/turn_angle             0.000000 -180.0  180.0  144.00
+    impeller/0/twist                  0.000000    0.0  360.0  144.00
+    impeller/0/helix                  0.000000    0.0  360.0  144.00
+    impeller/0/curl                   0.000000    0.0  500.0  200.00
+    impeller/0/around_number          6.000000    0.5   16.5    6.40
+    impeller/0/repeat_number          1.000000    0.5    8.5    3.20
+    impeller/0/repeat_heights_equal   2.000000    0.0    4.0    1.60
+    impeller/0/repeat_angles_bias    90.000000    0.0  180.0   72.00
+    impeller/fidgetsurface/0/alpha1   0.000000    0.0    8.0    3.20
+    impeller/fidgetsurface/0/beta1    0.010000    0.0    5.0    2.00
+  parameters_scaled = 
+                                        value       min       max  sigma
+    bottom_clearance                 0.937500  0.000000  2.500000    1.0
+    xplace                           0.000000 -1.250000  1.250000    1.0
+    yplace                           0.000000 -1.250000  1.250000    1.0
+    impeller/height_ratio            0.290178  0.000000  2.500000    1.0
+    impeller/diameter_ratio          1.046875  0.000000  2.500000    1.0
+    impeller/0/place_rel             1.492500  0.000000  2.500000    1.0
+    impeller/0/xlen_rel              2.015000  0.000000  2.500000    1.0
+    impeller/0/ylen_rel              0.007500  0.000000  2.500000    1.0
+    impeller/0/joint_place           1.250000  0.000000  2.500000    1.0
+    impeller/0/joint_angle           0.000000 -1.250000  1.250000    1.0
+    impeller/0/lean_place            1.250000  0.000000  2.500000    1.0
+    impeller/0/lean_angle            0.000000 -1.250000  1.250000    1.0
+    impeller/0/turn_place            1.250000  0.000000  2.500000    1.0
+    impeller/0/turn_angle            0.000000 -1.250000  1.250000    1.0
+    impeller/0/twist                 0.000000  0.000000  2.500000    1.0
+    impeller/0/helix                 0.000000  0.000000  2.500000    1.0
+    impeller/0/curl                  0.000000  0.000000  2.500000    1.0
+    impeller/0/around_number         0.937500  0.078125  2.578125    1.0
+    impeller/0/repeat_number         0.312500  0.156250  2.656250    1.0
+    impeller/0/repeat_heights_equal  1.250000  0.000000  2.500000    1.0
+    impeller/0/repeat_angles_bias    1.250000  0.000000  2.500000    1.0
+    impeller/fidgetsurface/0/alpha1  0.000000  0.000000  2.500000    1.0
+    impeller/fidgetsurface/0/beta1   0.005000  0.000000  2.500000    1.0
+  population = 50
+  rng = Generator(PCG64)
+  scaling = 
+    [  0.32   0.64   0.64   0.32   0.32   0.4    0.4    0.4    0.4  144.
+       0.4  144.     0.4  144.   144.   144.   200.     6.4    3.2    1.6
+      72.     3.2    2.  ]
+  script = #!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# File   ...
+  seed = 42
+  target = 0.1
+verbose = 4
+--------------------------------------------------------------------------------
+Starting ACCESS run at 00:22:46 on 23/08/2025
+
+Access
+------
+multi_objective = None
+paths = 
+  AccessPaths
+  -----------
+  directory = access_seed42
+  epochs = access_seed42/epochs_pop50.csv
+  epochs_scaled = access_seed42/epochs_pop50_scaled.csv
+  history = access_seed42/history_pop50.csv
+  history_scaled = access_seed42/history_pop50_scaled.csv
+  outputs = access_seed42/outputs
+  results = access_seed42/results
+  script = access_seed42/access_script.py
+  setup = access_seed42/access_setup.toml
+progress = 
+  AccessProgress
+  --------------
+  epochs = None
+  epochs_scaled = None
+  history = None
+  history_scaled = None
+  stderr = None
+  stdout = None
+scheduler = 
+  SlurmScheduler
+  --------------
+  commands = 
+          # Commands you'd add in the sbatch script, after `#`
+          module purge; module load bluebear
+
+          # Load OpenFOAM version needed
+          module load bear-apps/2022b
+          module load OpenFOAM/v2312-foss-2022b
+
+          # Environment with our Python libraries
+          module load Miniforge3/24.1.2-0
+          PYENV=wind-$BB_CPU
+
+          # Configure environment
+          source ${FOAM_BASH}
+
+          echo "Environment variables:"
+          echo $WM_PROJECT_DIR
+          echo $WM_THIRD_PARTY_DIR
+    
+  interpreter = /rds/homes/w/windowcr/.conda/envs/wind-sapphire/bin/python
+  kwargs = {'nodes': 1, 'account': 'windowcr-med-granutools', 'constraint': 'sapphire'}
+  mail_type = NONE
+  mem = None
+  ntasks = 32
+  qos = bbdefault
+  script = access_slurm_submission.sh
+  time = 13:0:0
+setup = 
+  AccessSetup
+  -----------
+  parameters = 
+                                         value    min    max   sigma
+    bottom_clearance                  0.300000    0.0    0.8    0.32
+    xplace                            0.000000   -0.8    0.8    0.64
+    yplace                            0.000000   -0.8    0.8    0.64
+    impeller/height_ratio             0.092857    0.0    0.8    0.32
+    impeller/diameter_ratio           0.335000    0.0    0.8    0.32
+    impeller/0/place_rel              0.597000    0.0    1.0    0.40
+    impeller/0/xlen_rel               0.806000    0.0    1.0    0.40
+    impeller/0/ylen_rel               0.003000    0.0    1.0    0.40
+    impeller/0/joint_place            0.500000    0.0    1.0    0.40
+    impeller/0/joint_angle            0.000000 -180.0  180.0  144.00
+    impeller/0/lean_place             0.500000    0.0    1.0    0.40
+    impeller/0/lean_angle             0.000000 -180.0  180.0  144.00
+    impeller/0/turn_place             0.500000    0.0    1.0    0.40
+    impeller/0/turn_angle             0.000000 -180.0  180.0  144.00
+    impeller/0/twist                  0.000000    0.0  360.0  144.00
+    impeller/0/helix                  0.000000    0.0  360.0  144.00
+    impeller/0/curl                   0.000000    0.0  500.0  200.00
+    impeller/0/around_number          6.000000    0.5   16.5    6.40
+    impeller/0/repeat_number          1.000000    0.5    8.5    3.20
+    impeller/0/repeat_heights_equal   2.000000    0.0    4.0    1.60
+    impeller/0/repeat_angles_bias    90.000000    0.0  180.0   72.00
+    impeller/fidgetsurface/0/alpha1   0.000000    0.0    8.0    3.20
+    impeller/fidgetsurface/0/beta1    0.010000    0.0    5.0    2.00
+  parameters_scaled = 
+                                        value       min       max  sigma
+    bottom_clearance                 0.937500  0.000000  2.500000    1.0
+    xplace                           0.000000 -1.250000  1.250000    1.0
+    yplace                           0.000000 -1.250000  1.250000    1.0
+    impeller/height_ratio            0.290178  0.000000  2.500000    1.0
+    impeller/diameter_ratio          1.046875  0.000000  2.500000    1.0
+    impeller/0/place_rel             1.492500  0.000000  2.500000    1.0
+    impeller/0/xlen_rel              2.015000  0.000000  2.500000    1.0
+    impeller/0/ylen_rel              0.007500  0.000000  2.500000    1.0
+    impeller/0/joint_place           1.250000  0.000000  2.500000    1.0
+    impeller/0/joint_angle           0.000000 -1.250000  1.250000    1.0
+    impeller/0/lean_place            1.250000  0.000000  2.500000    1.0
+    impeller/0/lean_angle            0.000000 -1.250000  1.250000    1.0
+    impeller/0/turn_place            1.250000  0.000000  2.500000    1.0
+    impeller/0/turn_angle            0.000000 -1.250000  1.250000    1.0
+    impeller/0/twist                 0.000000  0.000000  2.500000    1.0
+    impeller/0/helix                 0.000000  0.000000  2.500000    1.0
+    impeller/0/curl                  0.000000  0.000000  2.500000    1.0
+    impeller/0/around_number         0.937500  0.078125  2.578125    1.0
+    impeller/0/repeat_number         0.312500  0.156250  2.656250    1.0
+    impeller/0/repeat_heights_equal  1.250000  0.000000  2.500000    1.0
+    impeller/0/repeat_angles_bias    1.250000  0.000000  2.500000    1.0
+    impeller/fidgetsurface/0/alpha1  0.000000  0.000000  2.500000    1.0
+    impeller/fidgetsurface/0/beta1   0.005000  0.000000  2.500000    1.0
+  population = 50
+  rng = Generator(PCG64)
+  scaling = 
+    [  0.32   0.64   0.64   0.32   0.32   0.4    0.4    0.4    0.4  144.
+       0.4  144.     0.4  144.   144.   144.   200.     6.4    3.2    1.6
+      72.     3.2    2.  ]
+  script = #!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# File   ...
+  seed = 42
+  target = 0.1
+verbose = 4
+--------------------------------------------------------------------------------
+Starting ACCESS run at 16:55:09 on 28/08/2025
+
+Access
+------
+multi_objective = None
+paths = 
+  AccessPaths
+  -----------
+  directory = access_seed42
+  epochs = access_seed42/epochs_pop50.csv
+  epochs_scaled = access_seed42/epochs_pop50_scaled.csv
+  history = access_seed42/history_pop50.csv
+  history_scaled = access_seed42/history_pop50_scaled.csv
+  outputs = access_seed42/outputs
+  results = access_seed42/results
+  script = access_seed42/access_script.py
+  setup = access_seed42/access_setup.toml
+progress = 
+  AccessProgress
+  --------------
+  epochs = None
+  epochs_scaled = None
+  history = None
+  history_scaled = None
+  stderr = None
+  stdout = None
+scheduler = 
+  SlurmScheduler
+  --------------
+  commands = 
+          # Commands you'd add in the sbatch script, after `#`
+          module purge; module load bluebear
+
+          # Load OpenFOAM version needed
+          module load bear-apps/2022b
+          module load OpenFOAM/v2312-foss-2022b
+
+          # Environment with our Python libraries
+          module load Miniforge3/24.1.2-0
+          PYENV=wind-$BB_CPU
+
+          # Configure environment
+          source ${FOAM_BASH}
+
+          echo "Environment variables:"
+          echo $WM_PROJECT_DIR
+          echo $WM_THIRD_PARTY_DIR
+    
+  interpreter = /rds/homes/a/aln705/.conda/envs/wind-sapphire/bin/python
+  kwargs = {'nodes': 1, 'account': 'windowcr-med-granutools', 'constraint': 'sapphire'}
+  mail_type = NONE
+  mem = None
+  ntasks = 32
+  qos = bbdefault
+  script = access_slurm_submission.sh
+  time = 13:0:0
+setup = 
+  AccessSetup
+  -----------
+  parameters = 
+                                         value    min    max   sigma
+    bottom_clearance                  0.300000    0.0    0.8    0.32
+    xplace                            0.000000   -0.8    0.8    0.64
+    yplace                            0.000000   -0.8    0.8    0.64
+    impeller/height_ratio             0.092857    0.0    0.8    0.32
+    impeller/diameter_ratio           0.335000    0.0    0.8    0.32
+    impeller/0/place_rel              0.597000    0.0    1.0    0.40
+    impeller/0/xlen_rel               0.806000    0.0    1.0    0.40
+    impeller/0/ylen_rel               0.003000    0.0    1.0    0.40
+    impeller/0/joint_place            0.500000    0.0    1.0    0.40
+    impeller/0/joint_angle            0.000000 -180.0  180.0  144.00
+    impeller/0/lean_place             0.500000    0.0    1.0    0.40
+    impeller/0/lean_angle             0.000000 -180.0  180.0  144.00
+    impeller/0/turn_place             0.500000    0.0    1.0    0.40
+    impeller/0/turn_angle             0.000000 -180.0  180.0  144.00
+    impeller/0/twist                  0.000000    0.0  360.0  144.00
+    impeller/0/helix                  0.000000    0.0  360.0  144.00
+    impeller/0/curl                   0.000000    0.0  500.0  200.00
+    impeller/0/around_number          6.000000    0.5   16.5    6.40
+    impeller/0/repeat_number          1.000000    0.5    8.5    3.20
+    impeller/0/repeat_heights_equal   2.000000    0.0    4.0    1.60
+    impeller/0/repeat_angles_bias    90.000000    0.0  180.0   72.00
+    impeller/fidgetsurface/0/alpha1   0.000000    0.0    8.0    3.20
+    impeller/fidgetsurface/0/beta1    0.010000    0.0    5.0    2.00
+  parameters_scaled = 
+                                        value       min       max  sigma
+    bottom_clearance                 0.937500  0.000000  2.500000    1.0
+    xplace                           0.000000 -1.250000  1.250000    1.0
+    yplace                           0.000000 -1.250000  1.250000    1.0
+    impeller/height_ratio            0.290178  0.000000  2.500000    1.0
+    impeller/diameter_ratio          1.046875  0.000000  2.500000    1.0
+    impeller/0/place_rel             1.492500  0.000000  2.500000    1.0
+    impeller/0/xlen_rel              2.015000  0.000000  2.500000    1.0
+    impeller/0/ylen_rel              0.007500  0.000000  2.500000    1.0
+    impeller/0/joint_place           1.250000  0.000000  2.500000    1.0
+    impeller/0/joint_angle           0.000000 -1.250000  1.250000    1.0
+    impeller/0/lean_place            1.250000  0.000000  2.500000    1.0
+    impeller/0/lean_angle            0.000000 -1.250000  1.250000    1.0
+    impeller/0/turn_place            1.250000  0.000000  2.500000    1.0
+    impeller/0/turn_angle            0.000000 -1.250000  1.250000    1.0
+    impeller/0/twist                 0.000000  0.000000  2.500000    1.0
+    impeller/0/helix                 0.000000  0.000000  2.500000    1.0
+    impeller/0/curl                  0.000000  0.000000  2.500000    1.0
+    impeller/0/around_number         0.937500  0.078125  2.578125    1.0
+    impeller/0/repeat_number         0.312500  0.156250  2.656250    1.0
+    impeller/0/repeat_heights_equal  1.250000  0.000000  2.500000    1.0
+    impeller/0/repeat_angles_bias    1.250000  0.000000  2.500000    1.0
+    impeller/fidgetsurface/0/alpha1  0.000000  0.000000  2.500000    1.0
+    impeller/fidgetsurface/0/beta1   0.005000  0.000000  2.500000    1.0
+  population = 50
+  rng = Generator(PCG64)
+  scaling = 
+    [  0.32   0.64   0.64   0.32   0.32   0.4    0.4    0.4    0.4  144.
+       0.4  144.     0.4  144.   144.   144.   200.     6.4    3.2    1.6
+      72.     3.2    2.  ]
+  script = #!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# File   ...
+  seed = 42
+  target = 0.1
+verbose = 4

@@ -1,0 +1,160 @@
+[paths]
+directory = "access_seed42"
+results = "access_seed42/results"
+outputs = "access_seed42/outputs"
+script = "access_seed42/access_script.py"
+setup = "access_seed42/access_setup.toml"
+epochs = "access_seed42/epochs_pop50.csv"
+epochs_scaled = "access_seed42/epochs_pop50_scaled.csv"
+history = "access_seed42/history_pop50.csv"
+history_scaled = "access_seed42/history_pop50_scaled.csv"
+
+[setup]
+scaling = [ 0.2, 0.36000000000000004, 0.36000000000000004, 3.2, 0.4, 144.0, 0.4, 72.0, 0.4, 72.0, 144.0, 144.0, 200.0, 0.8, 3.2, 2.0,]
+population = 50
+target = 0.1
+seed = 42
+
+[setup.parameters.value]
+"baffles/0/place_rel" = 0.8
+"baffles/0/xlen_rel" = 0.17
+"baffles/0/ylen_rel" = 0.1
+"baffles/0/around_number" = 4.0
+"baffles/0/joint_place" = 0.5
+"baffles/0/joint_angle" = 0.0
+"baffles/0/lean_place" = 0.5
+"baffles/0/lean_angle" = 0.0
+"baffles/0/turn_place" = 0.5
+"baffles/0/turn_angle" = 0.0
+"baffles/0/twist" = 0.0
+"baffles/0/helix" = 0.0
+"baffles/0/curl" = 0.0
+"baffles/0/curl_bump" = 0.0
+"baffles/fidgetsurface/0/alpha1" = 0.0
+"baffles/fidgetsurface/0/beta1" = 0.01
+
+[setup.parameters.min]
+"baffles/0/place_rel" = 0.4
+"baffles/0/xlen_rel" = 0.1
+"baffles/0/ylen_rel" = 0.1
+"baffles/0/around_number" = 0.5
+"baffles/0/joint_place" = 0.0
+"baffles/0/joint_angle" = -180.0
+"baffles/0/lean_place" = 0.0
+"baffles/0/lean_angle" = -90.0
+"baffles/0/turn_place" = 0.0
+"baffles/0/turn_angle" = -90.0
+"baffles/0/twist" = 0.0
+"baffles/0/helix" = 0.0
+"baffles/0/curl" = 0.0
+"baffles/0/curl_bump" = -1.0
+"baffles/fidgetsurface/0/alpha1" = 0.0
+"baffles/fidgetsurface/0/beta1" = 0.0
+
+[setup.parameters.max]
+"baffles/0/place_rel" = 0.9
+"baffles/0/xlen_rel" = 1.0
+"baffles/0/ylen_rel" = 1.0
+"baffles/0/around_number" = 8.5
+"baffles/0/joint_place" = 1.0
+"baffles/0/joint_angle" = 180.0
+"baffles/0/lean_place" = 1.0
+"baffles/0/lean_angle" = 90.0
+"baffles/0/turn_place" = 1.0
+"baffles/0/turn_angle" = 90.0
+"baffles/0/twist" = 360.0
+"baffles/0/helix" = 360.0
+"baffles/0/curl" = 500.0
+"baffles/0/curl_bump" = 1.0
+"baffles/fidgetsurface/0/alpha1" = 8.0
+"baffles/fidgetsurface/0/beta1" = 5.0
+
+[setup.parameters.sigma]
+"baffles/0/place_rel" = 0.2
+"baffles/0/xlen_rel" = 0.36000000000000004
+"baffles/0/ylen_rel" = 0.36000000000000004
+"baffles/0/around_number" = 3.2
+"baffles/0/joint_place" = 0.4
+"baffles/0/joint_angle" = 144.0
+"baffles/0/lean_place" = 0.4
+"baffles/0/lean_angle" = 72.0
+"baffles/0/turn_place" = 0.4
+"baffles/0/turn_angle" = 72.0
+"baffles/0/twist" = 144.0
+"baffles/0/helix" = 144.0
+"baffles/0/curl" = 200.0
+"baffles/0/curl_bump" = 0.8
+"baffles/fidgetsurface/0/alpha1" = 3.2
+"baffles/fidgetsurface/0/beta1" = 2.0
+
+[setup.parameters_scaled.value]
+"baffles/0/place_rel" = 4.0
+"baffles/0/xlen_rel" = 0.4722222222222222
+"baffles/0/ylen_rel" = 0.27777777777777773
+"baffles/0/around_number" = 1.25
+"baffles/0/joint_place" = 1.25
+"baffles/0/joint_angle" = 0.0
+"baffles/0/lean_place" = 1.25
+"baffles/0/lean_angle" = 0.0
+"baffles/0/turn_place" = 1.25
+"baffles/0/turn_angle" = 0.0
+"baffles/0/twist" = 0.0
+"baffles/0/helix" = 0.0
+"baffles/0/curl" = 0.0
+"baffles/0/curl_bump" = 0.0
+"baffles/fidgetsurface/0/alpha1" = 0.0
+"baffles/fidgetsurface/0/beta1" = 0.005
+
+[setup.parameters_scaled.min]
+"baffles/0/place_rel" = 2.0
+"baffles/0/xlen_rel" = 0.27777777777777773
+"baffles/0/ylen_rel" = 0.27777777777777773
+"baffles/0/around_number" = 0.15625
+"baffles/0/joint_place" = 0.0
+"baffles/0/joint_angle" = -1.25
+"baffles/0/lean_place" = 0.0
+"baffles/0/lean_angle" = -1.25
+"baffles/0/turn_place" = 0.0
+"baffles/0/turn_angle" = -1.25
+"baffles/0/twist" = 0.0
+"baffles/0/helix" = 0.0
+"baffles/0/curl" = 0.0
+"baffles/0/curl_bump" = -1.25
+"baffles/fidgetsurface/0/alpha1" = 0.0
+"baffles/fidgetsurface/0/beta1" = 0.0
+
+[setup.parameters_scaled.max]
+"baffles/0/place_rel" = 4.5
+"baffles/0/xlen_rel" = 2.7777777777777772
+"baffles/0/ylen_rel" = 2.7777777777777772
+"baffles/0/around_number" = 2.65625
+"baffles/0/joint_place" = 2.5
+"baffles/0/joint_angle" = 1.25
+"baffles/0/lean_place" = 2.5
+"baffles/0/lean_angle" = 1.25
+"baffles/0/turn_place" = 2.5
+"baffles/0/turn_angle" = 1.25
+"baffles/0/twist" = 2.5
+"baffles/0/helix" = 2.5
+"baffles/0/curl" = 2.5
+"baffles/0/curl_bump" = 1.25
+"baffles/fidgetsurface/0/alpha1" = 2.5
+"baffles/fidgetsurface/0/beta1" = 2.5
+
+[setup.parameters_scaled.sigma]
+"baffles/0/place_rel" = 1.0
+"baffles/0/xlen_rel" = 1.0
+"baffles/0/ylen_rel" = 1.0
+"baffles/0/around_number" = 1.0
+"baffles/0/joint_place" = 1.0
+"baffles/0/joint_angle" = 1.0
+"baffles/0/lean_place" = 1.0
+"baffles/0/lean_angle" = 1.0
+"baffles/0/turn_place" = 1.0
+"baffles/0/turn_angle" = 1.0
+"baffles/0/twist" = 1.0
+"baffles/0/helix" = 1.0
+"baffles/0/curl" = 1.0
+"baffles/0/curl_bump" = 1.0
+"baffles/fidgetsurface/0/alpha1" = 1.0
+"baffles/fidgetsurface/0/beta1" = 1.0
